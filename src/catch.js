@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const {
     GenerateQuestionObj
 } = require('./q-builder');
+const {CatchPokemon} = require('./item-generation');
 
 function AttemptToCatch(i) {
     i = i ? i : 0;
@@ -15,6 +16,7 @@ function AttemptToCatch(i) {
                 return;
             }
             console.log('Nice! you found something!');
+            CatchPokemon();
         }
     });
 }
