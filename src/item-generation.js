@@ -1,5 +1,7 @@
 const {
-    GetPokemon
+    GetPokemon,
+    GetFileContent,
+    WriteToFile
 } = require('./file-io');
 
 function CatchPokemon() {
@@ -7,7 +9,50 @@ function CatchPokemon() {
         var pokemonArry = JSON.parse(pokemon);
         var caughtPokemon = GetRandomPokemon(pokemonArry);
         console.log(`Congrats you caught ${caughtPokemon}`);
+        AddPokemonToInventory(caughtPokemon);
     });
+}
+
+function AddPokemonToInventory(pokemon) {
+    GetFileContent().then(content => {
+        var json = JSON.parse(content);
+        if(!json.hasOwnProperty('p-inv')) {
+            json['p-inv'] = [];
+        }
+        var updatedJson = CheckInventory(json, pokemon, 'p');
+
+        return WriteToFile(JSON.stringify(updatedJson));
+    }).then(val => {
+
+    });
+}
+
+function CheckInventory(inv, item, type) {
+    switch(type) {
+        case 'i':
+        //Finish when items are a thing
+        // var i = _.where(inv['i-inv'], {name: item});
+        // //var inv['i-inv'].find(o => o.name === item);
+        return inv;
+        case 'p':
+        var obj = inv['p-inv'].find((o,i) => {
+            if(o.name === item) {
+                inv['p-inv'][i].count++;
+                return true;
+            }
+        });
+        console.log(obj);
+        if(typeof obj === 'undefined' && !obj) {
+            console.log('in here?');
+            inv['p-inv'].push({
+                name : item,
+                count: 1
+            });
+        }
+        return inv;
+        default:
+        return null;
+    }
 }
 
 function GetRandomPokemon(pokieArry) {
