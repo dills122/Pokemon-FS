@@ -3,6 +3,9 @@ const {
     GetFileContent,
     WriteToFile
 } = require('./file-io');
+const {
+    AddSearchEntry
+} = require('./search-history');
 
 function CatchPokemon() {
     GetPokemon().then(pokemon => {
@@ -10,6 +13,9 @@ function CatchPokemon() {
         var caughtPokemon = GetRandomPokemon(pokemonArry);
         console.log(`Congrats you caught ${caughtPokemon}`);
         AddPokemonToInventory(caughtPokemon);
+        AddSearchEntry().then(val => {
+            console.log("Added Search Entry");
+        });
     });
 }
 
