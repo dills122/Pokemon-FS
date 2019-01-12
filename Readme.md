@@ -12,7 +12,9 @@ npm install -g {workingDir}\Catch-Em-All
 
 ## Searching
 
-Currently the only command supported is `search`, which doesn't do much yet... However, stay tuned for future improvements and maybe an actual game.
+Currently the only command supported is `search`, which allows you to attempt to catch pokemon and add them to your inventory. Right now the catching randomness isn't good and catch rate is 80% or greater.
+
+Remove the dust from those unseen folders and catch a pokemon.
 
 
 ##### Tech Used
