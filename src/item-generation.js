@@ -37,7 +37,6 @@ function AddPokemonToInventory(pokemon) {
     }).catch(error => {
         console.log(error);
     });
-    console.log('added');
 }
 
 async function CheckInventory(inv, item, type) {
@@ -59,8 +58,6 @@ async function CheckInventory(inv, item, type) {
                     inv['p-inv'].push(pokemon);
                     return inv;
                 } catch(error) {
-                    console.log("In catch");
-                    console.log(error);
                     var pokemon = new Pokemon(item, 110,110);
                     inv['p-inv'].push(pokemon);
                     return inv;
