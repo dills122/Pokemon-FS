@@ -1,87 +1,63 @@
-const fs = require('fs');
 const hasha = require('hasha');
 const readline = require('readline');
 const stream = require('stream');
+const {
+    GetFileContent,
+    WriteToFile
+} = require('./file-io');
 
-//Constant Variables
-const recentSearchesFile = './src/data/recent-searches.txt';
+const _maxHistorySize = 500;
 
-
-function CheckRecentSearches(currentPath) {
-    return new Promise((resolve, reject) => {
-        // (async () => {
-            
-        //     const rl = readline.createInterface({
-        //         input: fileStream,
-        //         crlfDelay: Infinity
-        //     });
-        //     try {
-        //         for await (const line of rl) {
-        //             // Each line in input.txt will be successively available here as `line`.
-        //             console.log(`Line from file: ${line}`);
-        //             if (currentPath === line) {
-        //                 reject("Already searched here");
-        //                 break;
-        //             }
-        //         }
-        //         resolve(true);
-        //     } catch (e) {
-        //         console.log(e.stack);
-        //         reject("Error has occured");
-        //     }
-        // })();
-        const fileStream = fs.createReadStream(recentSearchesFile);
-        function readLines({ input }) {
-            const output = new stream.PassThrough({ objectMode: true });
-            const rl = readline.createInterface({ input });
-            rl.on("line", line => { 
-              output.write(line);
-            });
-            rl.on("close", () => {
-              output.push(null);
-            }); 
-            return output;
-          }
-
-          (async () => {
-            for await (const line of readLines({ fileStream })) {
-              console.log(line);
-            }
-          })();
-
-    });
+function HashSearchEntry() {
+    var hours = new Date().getHours();
+    var currDir = process.cwd();
+    return hasha(currDir + hours);
 }
 
-function AddSearchResult(newPath) {
-    var stream = fs.createWriteStream(recentSearchesFile, {
-        flags: 'a'
-    });
-    var hashValue = HashValue(newPath);
-    stream.write(hashValue + '\n');
-    console.log(hashValue);
+async function ReviewSearchHistory() {
+    var searchHistory = await GetFileContent();
+    searchHistory = JSON.parse(searchHistory);
+    var currDirHash = HashSearchEntry();
+    return CheckHistory(searchHistory["recent-searches"], currDirHash);
 }
 
-function CleanUpResults() {
-
+function CleanUpSearchHistory(searchHistory) {
+    // var i = searchHistory.length;
+    // while (i--) {
+    //     if (searchHistory[i] === HashSearchEntry()) {
+    //         searchHistory.splice(i, 1);
+    //     }
+    // }
+    // return searchHistory;
+    var historyLength = searchHistory.length;
+    if(historyLength >= _maxHistorySize) {
+        var halfLength = Math.ceil(historyLength /2);
+        return searchHistory.splice(halfLength, historyLength -1);
+    }
 }
 
-function HashValue(value) {
-    return hasha(value);
-}
-
-function ReviewSearchHistory(path) {
-    CheckRecentSearches(path).then(val => {
-        if (exists) {
-            console.log("Cannot search here again for some time");
+function CheckHistory(searchHistory, searchEntryHash) {
+    var CanSearch = true;
+    searchHistory.some(value => {
+        if (value === searchEntryHash) {
+            CanSearch = false;
+            return true;
         }
-        AddSearchResult(path);
-        CleanUpResults();
-    }).catch(error => {
-        console.log('Errors');
+        return (value === searchEntryHash);
     });
+    return CanSearch;
+}
 
+async function AddSearchEntry() {
+    var searchHistory = await GetFileContent();
+    searchHistory = JSON.parse(searchHistory);
+    searchHistory["recent-searches"].push(HashSearchEntry());
+    var value = await WriteToFile(JSON.stringify(searchHistory));
+    //Just testing this
+    return value;
 }
 
 module.exports = {
     ReviewSearchHistory,
+    AddSearchEntry
 }
