@@ -11,10 +11,11 @@ function CatchPokemon() {
     GetPokemon().then(pokemon => {
         var pokemonArry = JSON.parse(pokemon);
         var caughtPokemon = GetRandomPokemon(pokemonArry);
+        console.log(pokeball);
         console.log(`Congrats you caught ${caughtPokemon}`);
         AddPokemonToInventory(caughtPokemon);
         AddSearchEntry().then(val => {
-            console.log("Added Search Entry");
+
         });
     });
 }
@@ -67,6 +68,27 @@ function GetRandomPokemon(pokieArry) {
     var winner = indices[Math.floor(Math.random() * (2 - 0 + 1) + 0)];
     return pokieArry[winner];
 }
+
+const pokeball = `
+@@@@@@@@@@@@@@@%******,%&@@@@@@@@@@@@@@
+@@@@@@@@@@%./((((((((#####(,*@@@@@@@@@@
+@@@@@@@#.//(((((((((##########,*@@@@@@@
+@@@@@,////////((((((###########%#.@@@@@
+@@@@,////****//(((((###########%%%*#@@@
+@@%/////*,..,*//((((###########%%%%#*@@
+@#/////**,,**//((((###########%%%%%%%,@
+@*////////////((((###########%%%%%%%%(#
+*/(//////////((((##########%%%%%%%%%%%.
+//((//////((((((#######%%%%%%%%%%%%%%%/
+*/((((////(((((#####%%&@@@@@&%%%%%%%%%.
+##/(((((((((((####%@@*....,&@&%%%%%@%.
+@ /&&&%((((#######&@%... . ..&@@@@@%,.,
+@    *%&&&@@@@@@@@@@,       .%@%*.... @
+@@.            ..,% .     %@*   .. @@
+@@@@               #&,,*%&%.  ... @@@
+@@@@@                ,#%%(*   ....@@@@@
+@@@@@@@                     ... @@@@@@@
+@@@@@@@@@@              .... @@@@@@@@@@`;
 
 module.exports = {
     CatchPokemon
