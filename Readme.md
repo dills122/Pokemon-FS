@@ -19,5 +19,7 @@ Remove the dust from those unseen folders and catch a pokemon.
 
 ##### Tech Used
 
-[Commander](https://github.com/tj/commander.js/)
-[Hasha](https://github.com/sindresorhus/hasha)
+* [Commander](https://github.com/tj/commander.js/)
+* [Hasha](https://github.com/sindresorhus/hasha)
+* [Inquirer](https://github.com/SBoudrias/Inquirer.js/)
+* [app-root-path](https://github.com/inxilpro/node-app-root-path)
