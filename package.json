@@ -1,6 +1,6 @@
 {
   "name": "catch-em-all",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A file system pokemon game",
   "main": "catchem.js",
   "scripts": {
