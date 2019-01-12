@@ -4,6 +4,9 @@ const {
     AddSearchEntry
 } = require('./search-history');
 const util = require('util');
+const {
+    AttemptToCatch
+} = require('./catch');
 
 function CheckForPokemon() {
     console.log("Searching...");
@@ -17,6 +20,7 @@ function CheckForPokemon() {
 }
 
 function Search() {
+    AttemptToCatch();
     //Need to start interactive CLI for catching Pokemon
     AddSearchEntry().then(val => {
         console.log("Added Search Entry");
