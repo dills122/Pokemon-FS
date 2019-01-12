@@ -2,7 +2,9 @@ const inquirer = require('inquirer');
 const {
     GenerateQuestionObj
 } = require('./q-builder');
-const {CatchPokemon} = require('./item-generation');
+const {
+    CatchPokemon
+} = require('./item-generation');
 
 function AttemptToCatch(i) {
     i = i ? i : 0;
@@ -11,6 +13,7 @@ function AttemptToCatch(i) {
             if (!CheckLuck()) {
                 if (i != 3) {
                     AttemptToCatch(i++);
+                    return;
                 }
                 console.log("Couldn't find anything yet");
                 return;
@@ -24,8 +27,7 @@ function AttemptToCatch(i) {
 function CheckLuck() {
     const _maxNum = 50000;
     var randNum = Math.floor(Math.random() * _maxNum) + 1;
-    console.log(randNum);
-    if (randNum % 2 || randNum % 7) {
+    if (randNum % 11 === 0 || randNum % 7 === 0) {
         return true;
     }
     return false;

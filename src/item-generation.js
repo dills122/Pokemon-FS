@@ -16,7 +16,7 @@ function CatchPokemon() {
 function AddPokemonToInventory(pokemon) {
     GetFileContent().then(content => {
         var json = JSON.parse(content);
-        if(!json.hasOwnProperty('p-inv')) {
+        if (!json.hasOwnProperty('p-inv')) {
             json['p-inv'] = [];
         }
         var updatedJson = CheckInventory(json, pokemon, 'p');
@@ -28,30 +28,25 @@ function AddPokemonToInventory(pokemon) {
 }
 
 function CheckInventory(inv, item, type) {
-    switch(type) {
+    switch (type) {
         case 'i':
-        //Finish when items are a thing
-        // var i = _.where(inv['i-inv'], {name: item});
-        // //var inv['i-inv'].find(o => o.name === item);
-        return inv;
+            return inv;
         case 'p':
-        var obj = inv['p-inv'].find((o,i) => {
-            if(o.name === item) {
-                inv['p-inv'][i].count++;
-                return true;
-            }
-        });
-        console.log(obj);
-        if(typeof obj === 'undefined' && !obj) {
-            console.log('in here?');
-            inv['p-inv'].push({
-                name : item,
-                count: 1
+            var obj = inv['p-inv'].find((o, i) => {
+                if (o.name === item) {
+                    inv['p-inv'][i].count++;
+                    return true;
+                }
             });
-        }
-        return inv;
+            if (typeof obj === 'undefined' && !obj) {
+                inv['p-inv'].push({
+                    name: item,
+                    count: 1
+                });
+            }
+            return inv;
         default:
-        return null;
+            return null;
     }
 }
 
@@ -59,7 +54,7 @@ function GetRandomPokemon(pokieArry) {
     var arrayLength = pokieArry.length;
     var indices = [];
 
-    for(var i = 0; i < 3; i++) {
+    for (var i = 0; i < 3; i++) {
         var randIndex = Math.floor(Math.random() * (arrayLength - 0 + 1) + 0);
         indices.push(randIndex);
     }
