@@ -6,6 +6,10 @@ const {
 const {
     AddSearchEntry
 } = require('./search-history');
+const {
+    GetPokemonStats
+} = require('./api-access');
+var {Pokemon} = require('./models/pokemon');
 
 function CatchPokemon() {
     GetPokemon().then(pokemon => {
@@ -13,9 +17,9 @@ function CatchPokemon() {
         var caughtPokemon = GetRandomPokemon(pokemonArry);
         console.log(`Congrats you caught ${caughtPokemon}`);
         AddPokemonToInventory(caughtPokemon);
-        AddSearchEntry().then(val => {
-            console.log("Added Search Entry");
-        });
+        // AddSearchEntry().then(val => {
+        //     console.log("Added Search Entry");
+        // });
     });
 }
 
@@ -25,32 +29,43 @@ function AddPokemonToInventory(pokemon) {
         if (!json.hasOwnProperty('p-inv')) {
             json['p-inv'] = [];
         }
-        var updatedJson = CheckInventory(json, pokemon, 'p');
-
+        return CheckInventory(json, pokemon, 'p');          
+    }).then(updatedJson => {
         return WriteToFile(JSON.stringify(updatedJson));
     }).then(val => {
-
+        
+    }).catch(error => {
+        console.log(error);
     });
+    console.log('added');
 }
 
-function CheckInventory(inv, item, type) {
+async function CheckInventory(inv, item, type) {
     switch (type) {
         case 'i':
             return inv;
         case 'p':
             var obj = inv['p-inv'].find((o, i) => {
                 if (o.name === item) {
-                    inv['p-inv'][i].count++;
+                    //Add prompt for duplicate
+                    //inv['p-inv'][i].count++;
+                    console.log("Already have this pokemon stage");
                     return true;
                 }
             });
             if (typeof obj === 'undefined' && !obj) {
-                inv['p-inv'].push({
-                    name: item,
-                    count: 1
-                });
+                try {
+                    var pokemon = await GetPokemonStats(item);
+                    inv['p-inv'].push(pokemon);
+                    return inv;
+                } catch(error) {
+                    console.log("In catch");
+                    console.log(error);
+                    var pokemon = new Pokemon(item, 110,110);
+                    inv['p-inv'].push(pokemon);
+                    return inv;
+                }
             }
-            return inv;
         default:
             return null;
     }
