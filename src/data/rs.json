@@ -1,7 +1,7 @@
 {
 	"name": "Dylan",
 	"recent-searches": [
-		
+		"7889c75dfafb2e391f065d7a89f9173225aba24140d952100cf06b1866f911e42a6e507bce8f74b76f5e222ed93bd86d10cf087f7d71a7e2035d6900b0320935"
 	],
 	"p-inv": [
 		{
@@ -42,6 +42,22 @@
 		},
 		{
 			"name": "Mawile",
+			"count": 1
+		},
+		{
+			"name": "Doublade",
+			"count": 1
+		},
+		{
+			"name": "Nidorina",
+			"count": 1
+		},
+		{
+			"name": "Magmar",
+			"count": 1
+		},
+		{
+			"name": "Toucannon",
 			"count": 1
 		}
 	],

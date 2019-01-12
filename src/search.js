@@ -1,7 +1,6 @@
 const pokemon = require('./data/en');
 const {
-    ReviewSearchHistory,
-    AddSearchEntry
+    ReviewSearchHistory
 } = require('./search-history');
 const util = require('util');
 const {
@@ -21,10 +20,6 @@ function CheckForPokemon() {
 
 function Search() {
     AttemptToCatch();
-    //Need to start interactive CLI for catching Pokemon
-    AddSearchEntry().then(val => {
-        console.log("Added Search Entry");
-    });
 }
 
 function CantSearch() {
