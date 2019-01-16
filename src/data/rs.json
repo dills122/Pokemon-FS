@@ -1,64 +1,20 @@
 {
 	"name": "Dylan",
 	"recent-searches": [
-		"7889c75dfafb2e391f065d7a89f9173225aba24140d952100cf06b1866f911e42a6e507bce8f74b76f5e222ed93bd86d10cf087f7d71a7e2035d6900b0320935"
+		"1f4e1ba922dee1d8f83a28eb3507ce95418b0592479e6b638748eed1f65f7b26ac658c3e8b37969b1f944ac27906e28d495df7d24810bb789c2036fc231342cf"
 	],
 	"p-inv": [
 		{
-			"name": "Toxapex",
-			"count": 3
+			"name": "Bronzong",
+			"count": 1,
+			"power": 33,
+			"defense": 33
 		},
 		{
-			"name": "Pelipper",
-			"count": 1
-		},
-		{
-			"name": "Frogadier",
-			"count": 1
-		},
-		{
-			"name": "Kingdra",
-			"count": 1
-		},
-		{
-			"name": "Gible",
-			"count": 1
-		},
-		{
-			"name": "Porygon",
-			"count": 1
-		},
-		{
-			"name": "Ferrothorn",
-			"count": 1
-		},
-		{
-			"name": "Primeape",
-			"count": 1
-		},
-		{
-			"name": "Gigalith",
-			"count": 1
-		},
-		{
-			"name": "Mawile",
-			"count": 1
-		},
-		{
-			"name": "Doublade",
-			"count": 1
-		},
-		{
-			"name": "Nidorina",
-			"count": 1
-		},
-		{
-			"name": "Magmar",
-			"count": 1
-		},
-		{
-			"name": "Toucannon",
-			"count": 1
+			"name": "Hoopa",
+			"count": 1,
+			"power": 70,
+			"defense": 70
 		}
 	],
 	"i-inv": [

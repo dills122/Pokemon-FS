@@ -6,54 +6,60 @@ const {
 const {
     AddSearchEntry
 } = require('./search-history');
+const {
+    GetPokemonStats
+} = require('./api-access');
+var {
+    Pokemon
+} = require('./models/pokemon');
 
 function CatchPokemon() {
+    var newPokemon = "";
     GetPokemon().then(pokemon => {
-        var pokemonArry = JSON.parse(pokemon);
-        var caughtPokemon = GetRandomPokemon(pokemonArry);
-        console.log(`Congrats you caught ${caughtPokemon}`);
-        AddPokemonToInventory(caughtPokemon);
-        AddSearchEntry().then(val => {
-            console.log("Added Search Entry");
-        });
-    });
-}
-
-function AddPokemonToInventory(pokemon) {
-    GetFileContent().then(content => {
-        var json = JSON.parse(content);
-        if (!json.hasOwnProperty('p-inv')) {
-            json['p-inv'] = [];
-        }
-        var updatedJson = CheckInventory(json, pokemon, 'p');
-
-        return WriteToFile(JSON.stringify(updatedJson));
-    }).then(val => {
-
-    });
-}
-
-function CheckInventory(inv, item, type) {
-    switch (type) {
-        case 'i':
-            return inv;
-        case 'p':
-            var obj = inv['p-inv'].find((o, i) => {
-                if (o.name === item) {
-                    inv['p-inv'][i].count++;
-                    return true;
-                }
-            });
-            if (typeof obj === 'undefined' && !obj) {
-                inv['p-inv'].push({
-                    name: item,
-                    count: 1
-                });
+            var pokemonArry = JSON.parse(pokemon);
+            var caughtPokemon = GetRandomPokemon(pokemonArry);
+            newPokemon = caughtPokemon;
+            console.log(`Congrats you caught ${caughtPokemon}`);
+            return GetFileContent();
+        }).then(content => {
+            var json = JSON.parse(content);
+            if (!json.hasOwnProperty('p-inv')) {
+                json['p-inv'] = [];
             }
-            return inv;
-        default:
-            return null;
+            return AddPokemon(json, newPokemon);
+        }).then(updatedJson => {
+            return WriteToFile(JSON.stringify(updatedJson));
+        }).then(val => {
+            return AddSearchEntry();
+        }).then(val => {
+            return;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+async function AddPokemon(json, pokemonName) {
+    var inventory = json['p-inv'];
+    var existingObj = inventory.find(o => {
+        if (o.name === pokemonName) {
+            return true;
+        }
+    });
+    if (typeof existingObj === 'undefined' && !existingObj) {
+        try {
+            var pokemon = await GetPokemonStats(pokemonName);
+            inventory.push(pokemon);
+            json['p-inv'] = inventory;
+            return json;
+        } catch (error) {
+            console.log(error);
+        }
+        var genPokemon = new Pokemon(pokemonName, 110, 110);
+        inventory.push(genPokemon);
+        json['p-inv'] = inventory;
     }
+    return json;
 }
 
 function GetRandomPokemon(pokieArry) {

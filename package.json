@@ -1,6 +1,6 @@
 {
   "name": "catch-em-all",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A file system pokemon game",
   "main": "catchem.js",
   "scripts": {
@@ -16,7 +16,9 @@
     "app-root-path": "^2.1.0",
     "commander": "^2.19.0",
     "hasha": "^3.0.0",
-    "inquirer": "^6.2.1"
+    "inquirer": "^6.2.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
   },
   "bin": {
     "catchem": "./bin/demo-global.js"
