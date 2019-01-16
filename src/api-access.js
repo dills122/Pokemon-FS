@@ -1,15 +1,15 @@
-var Pokedex = require('pokedex-promise-v2');
-var P = new Pokedex();
-var {Pokemon} = require('./models/pokemon');
+var {
+    Pokemon
+} = require('./models/pokemon');
+var rp = require('request-promise-native');
 
 async function GetPokemonStats(name) {
-    var pokemonStats = await P.getPokemonByName(name.toLowerCase());
-    var baseStat = pokemonStats['stats'][0]['base_stat'];
-    console.log(pokemonStats);
-    var pokemon = new Pokemon(name,baseStat,baseStat);
+    var reqStr = `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`;
+    var resp = await rp(reqStr);
+    resp = JSON.parse(resp);
+    var baseStat = resp.stats[0].base_stat;
+    var pokemon = new Pokemon(name, baseStat, baseStat);
     return pokemon;
-    // return new Pokemon(name, 110,110);
-
 }
 
 module.exports = {

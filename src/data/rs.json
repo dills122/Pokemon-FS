@@ -1,176 +1,20 @@
 {
 	"name": "Dylan",
 	"recent-searches": [
-		"d67d9c8a0632d67c49463847dcd9d64978e360e59db0afdaa6d3b8b04c24a5f07d4b348a8beb349d3bb343d6dd5222515bce9fdaf86cb421fbdae5cc35af1988"
+		"1f4e1ba922dee1d8f83a28eb3507ce95418b0592479e6b638748eed1f65f7b26ac658c3e8b37969b1f944ac27906e28d495df7d24810bb789c2036fc231342cf"
 	],
 	"p-inv": [
 		{
-			"name": "Cubone",
+			"name": "Bronzong",
 			"count": 1,
-			"power": 110,
-			"defense": 110
+			"power": 33,
+			"defense": 33
 		},
 		{
-			"name": "Relicanth",
+			"name": "Hoopa",
 			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Riolu",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Fletchinder",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Darmanitan",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Rhyhorn",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Bidoof",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Magearna",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Butterfree",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Delibird",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Dewpider",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Solosis",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Anorith",
-			"count": 1,
-			"power": 75,
-			"defense": 75
-		},
-		{
-			"name": "Beedrill",
-			"count": 1,
-			"power": 75,
-			"defense": 75
-		},
-		{
-			"name": "Florges",
-			"count": 1,
-			"power": 75,
-			"defense": 75
-		},
-		{
-			"name": "Gengar",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Cosmog",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Seedot",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Reshiram",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Trapinch",
-			"count": 1,
-			"power": 10,
-			"defense": 10
-		},
-		{
-			"name": "Monferno",
-			"count": 1,
-			"power": 81,
-			"defense": 81
-		},
-		{
-			"name": "Rowlet",
-			"count": 1,
-			"power": 42,
-			"defense": 42
-		},
-		{
-			"name": "Skrelp",
-			"count": 1,
-			"power": 30,
-			"defense": 30
-		},
-		{
-			"name": "Deino",
-			"count": 1,
-			"power": 38,
-			"defense": 38
-		},
-		{
-			"name": "Roggenrola",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Exeggcute",
-			"count": 1,
-			"power": 110,
-			"defense": 110
-		},
-		{
-			"name": "Cofagrigus",
-			"count": 1,
-			"power": 30,
-			"defense": 30
-		},
-		{
-			"name": "Vikavolt",
-			"count": 1,
-			"power": 43,
-			"defense": 43
+			"power": 70,
+			"defense": 70
 		}
 	],
 	"i-inv": [
