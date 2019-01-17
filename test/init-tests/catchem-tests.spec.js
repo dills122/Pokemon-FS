@@ -1,5 +1,3 @@
-const assert = require('assert');
-const mocha = require('mocha');
 const chai = require('chai');
 const catchem = require('../../catchem');
 const expect = chai.expect;
