@@ -1,11 +1,11 @@
-const program = require('commander');
-const {
-    CheckForPokemon
-} = require('./src/search');
+(() => {
+    const program = require('commander');
+    const {
+        CheckForPokemon
+    } = require('./src/search');
 
-
-function init() {
     console.log("Welcome to Catch Em All");
+    
     if (process.argv.length <= 2) {
         console.log("need to have command args");
     }
@@ -30,10 +30,4 @@ function init() {
         });
 
     program.parse(process.argv);
-}
-
-init();
-
-module.exports = {
-    init,
-}
+})();
