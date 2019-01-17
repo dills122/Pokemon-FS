@@ -1,5 +1,7 @@
 # Pokemon : File System Edition
 
+[![Build Status](https://travis-ci.org/dills122/Pokemon-FS.svg?branch=master)](https://travis-ci.org/dills122/Pokemon-FS)
+
 Welcome to NTFS, an uncharted area in the Pokémon universe, where nothing is like you know. NTFS is a virtual Pokémon world full of adventures throughout your file system. Explore directories in search of that rare pokemon and have a hell of a lot of fun along the way.
 
 ## Getting Started (Dev)
