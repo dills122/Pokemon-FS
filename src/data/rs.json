@@ -1,7 +1,7 @@
 {
 	"name": "Dylan",
 	"recent-searches": [
-		"1f4e1ba922dee1d8f83a28eb3507ce95418b0592479e6b638748eed1f65f7b26ac658c3e8b37969b1f944ac27906e28d495df7d24810bb789c2036fc231342cf"
+		
 	],
 	"p-inv": [
 		{
@@ -15,6 +15,12 @@
 			"count": 1,
 			"power": 70,
 			"defense": 70
+		},
+		{
+			"name": "Machamp",
+			"count": 1,
+			"power": 55,
+			"defense": 55
 		}
 	],
 	"i-inv": [

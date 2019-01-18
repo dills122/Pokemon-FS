@@ -15,6 +15,8 @@ function CheckForPokemon() {
         } else {
             CantSearch();
         }
+    }).catch(err => {
+        CantSearch();
     });
 }
 
