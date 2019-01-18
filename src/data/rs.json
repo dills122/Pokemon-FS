@@ -1,7 +1,8 @@
 {
 	"name": "Dylan",
 	"recent-searches": [
-		"1f4e1ba922dee1d8f83a28eb3507ce95418b0592479e6b638748eed1f65f7b26ac658c3e8b37969b1f944ac27906e28d495df7d24810bb789c2036fc231342cf"
+		"1f4e1ba922dee1d8f83a28eb3507ce95418b0592479e6b638748eed1f65f7b26ac658c3e8b37969b1f944ac27906e28d495df7d24810bb789c2036fc231342cf",
+		"f8b59457f18f22f15738d64813002d7dd5802d9282eb528c1d4bc4a19aa1afd4ad03f4aa9af03de54fa64b4384430e708ef6906eed21492549e88ed4007b6f44"
 	],
 	"p-inv": [
 		{
@@ -15,6 +16,12 @@
 			"count": 1,
 			"power": 70,
 			"defense": 70
+		},
+		{
+			"name": "Machamp",
+			"count": 1,
+			"power": 55,
+			"defense": 55
 		}
 	],
 	"i-inv": [
