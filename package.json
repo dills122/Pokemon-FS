@@ -26,7 +26,7 @@
     "mocha": "^5.2.0"
   },
   "bin": {
-    "catchem": "./bin/demo-global.js"
+    "catchem": "./bin/global.js"
   },
   "preferGlobal": true
 }
