@@ -54,7 +54,7 @@ function PickPokemonPrompt(battlingPokemon, pInv) {
 async function BattlePrompt(battlingPokemon, playerPokemon) {
     for (let i = 0; i < 3; i++) {
         if (battlingPokemon.power <= 0 || playerPokemon.power <= 0) {
-            return false;
+            return battlingPokemon.power <= 0 && playerPokemon.power >= 1 ? true : false;
         }
 
         let answer = await BuildBattlePrompt(`${battlingPokemon.name}: ${battlingPokemon.power}`);
@@ -71,7 +71,7 @@ async function BattlePrompt(battlingPokemon, playerPokemon) {
         battlingPokemon = pokemonOne;
         playerPokemon = pokemonTwo;
     }
-    return true;
+    return playerPokemon.power >= battlingPokemon.power ? true : false;
 }
 
 function BuildBattlePrompt(battlePokemonStr) {
@@ -87,24 +87,6 @@ function FightPokemon(pokemonOne, pokemonTwo) {
     let PD = PercentDifference(pokemonOne.power, pokemonTwo.power);
     let LB = LowerBond(PD);
     let UB = Math.ceil(LB * 1.6);
-    // let powerOne = pokemonOne.power;
-    // let powerTwo = pokemonTwo.power;
-    // console.log(CalculateValue(powerOne, 1.3));
-    // if (CalculateValue(powerOne, 1.3) >= powerTwo) {
-    //     pokemonTwo.power -= Math.floor(Math.random() * (20 - 0 + 1) + 0);
-    //     return {
-    //         pokemonOne,
-    //         pokemonTwo
-    //     };
-    // }
-
-    // if (CalculateValue(powerTwo, 1.3) >= powerOne) {
-    //     pokemonOne.power -= Math.floor(Math.random() * (25 - 0 + 1) + 0);
-    //     return {
-    //         pokemonOne,
-    //         pokemonTwo
-    //     };
-    // }
 
     if(pokemonOne.power > pokemonTwo.power) {
         pokemonOne.power -= getRndInteger(LB,UB);

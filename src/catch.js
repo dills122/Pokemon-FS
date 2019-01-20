@@ -5,6 +5,9 @@ const {
 const {
     CatchPokemon
 } = require('./item-generation');
+const {
+    Battle
+} = require('./battle');
 
 function AttemptToCatch() {
     let luck = CheckLuck();
@@ -19,7 +22,8 @@ function DisplayPrompt() {
     inquirer.prompt([GenerateQuestionObj()]).then((answers) => {
         if (!answers.catch.includes('N')) {
             console.log('Nice! you found something!');
-            CatchPokemon();
+            //CatchPokemon();
+            //Battle();
         }
     });
 }

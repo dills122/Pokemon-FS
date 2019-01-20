@@ -21,6 +21,12 @@
 			"count": 1,
 			"power": 55,
 			"defense": 55
+		},
+		{
+			"name": "Turtonator",
+			"count": 1,
+			"power": 36,
+			"defense": 36
 		}
 	],
 	"i-inv": [
