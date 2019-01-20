@@ -52,7 +52,6 @@ function PickPokemonPrompt(battlingPokemon, pInv) {
 }
 
 async function BattlePrompt(battlingPokemon, playerPokemon) {
-    console.log(playerPokemon);
     for (let i = 0; i < 3; i++) {
         if (battlingPokemon.power <= 0 || playerPokemon.power <= 0) {
             return false;
@@ -67,11 +66,10 @@ async function BattlePrompt(battlingPokemon, playerPokemon) {
             pokemonOne,
             pokemonTwo
         } = FightPokemon(battlingPokemon, playerPokemon);
+        console.log(`Battling Pokemon, ${battlingPokemon.name}, is at ${battlingPokemon.power} power`);
         console.log(`Your Pokemon, ${playerPokemon.name}, is at ${playerPokemon.power} power`);
         battlingPokemon = pokemonOne;
         playerPokemon = pokemonTwo;
-        console.log(`${battlingPokemon.name} is at ${battlingPokemon.power}`);
-        console.log(`${playerPokemon.name} is at ${playerPokemon.power}`);
     }
     return true;
 }
@@ -86,6 +84,9 @@ function BuildBattlePrompt(battlePokemonStr) {
 }
 
 function FightPokemon(pokemonOne, pokemonTwo) {
+    let PD = PercentDifference(pokemonOne.power, pokemonTwo.power);
+    let LB = LowerBond(PD);
+    let UB = Math.ceil(LB * 1.6);
     // let powerOne = pokemonOne.power;
     // let powerTwo = pokemonTwo.power;
     // console.log(CalculateValue(powerOne, 1.3));
@@ -105,15 +106,35 @@ function FightPokemon(pokemonOne, pokemonTwo) {
     //     };
     // }
 
-    let hit = Math.floor(Math.random() * (25 - 0 + 1) + 0);
-
-    pokemonOne.power -= hit;
-    pokemonTwo.power -= hit;
+    if(pokemonOne.power > pokemonTwo.power) {
+        pokemonOne.power -= getRndInteger(LB,UB);
+        pokemonTwo.power -= getRndInteger(0,(UB -LB));
+    } else {
+        pokemonOne.power -= getRndInteger(0,(UB -LB));
+        pokemonTwo.power -= getRndInteger(LB,UB);
+    }
+    
+    pokemonOne.power = pokemonOne.power <= 0 ? 0 : pokemonOne.power;
+    pokemonTwo.power = pokemonTwo.power <= 0 ? 0 : pokemonTwo.power;
     return {
         pokemonOne,
         pokemonTwo
     };
 }
+
+function PercentDifference(valOne, valTwo) {
+    let valDiff = Math.abs(valOne - valTwo);
+    let valAvg = Math.ceil(((valOne + valTwo)/2));
+    return Math.ceil(((valDiff/valAvg) * 100));
+}
+
+function LowerBond(PD) {
+    return Math.ceil(((PD/2)+PD)/2);
+}
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
 
 
 module.exports = {
