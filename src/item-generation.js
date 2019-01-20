@@ -16,13 +16,12 @@ var {
 function CatchPokemon() {
     var newPokemon = "";
     GetPokemon().then(pokemon => {
-            var pokemonArry = JSON.parse(pokemon);
-            var caughtPokemon = GetRandomPokemon(pokemonArry);
+            let caughtPokemon = GetRandomPokemon(JSON.parse(pokemon));
             newPokemon = caughtPokemon;
             console.log(`Congrats you caught ${caughtPokemon}`);
             return GetFileContent();
         }).then(content => {
-            var json = JSON.parse(content);
+            let json = JSON.parse(content);
             if (!json.hasOwnProperty('p-inv')) {
                 json['p-inv'] = [];
             }
@@ -40,30 +39,42 @@ function CatchPokemon() {
 }
 
 async function AddPokemon(json, pokemonName) {
-    var inventory = json['p-inv'];
-    var existingObj = inventory.find(o => {
-        if (o.name === pokemonName) {
-            return true;
+    let inventory = json['p-inv'];
+    let alreadyCaught = CheckInvForPokemon(inventory);
+
+    if (typeof alreadyCaught === 'undefined' && !alreadyCaught) {
+        try {
+            var pokemon = await GetPokemonStats(pokemonName);
+            inventory.push(pokemon);
+            json['p-inv'] = inventory;
+            return json;
+        } catch (error) {
+            console.log(error);
         }
-    });
-    if (typeof existingObj === 'undefined' && !existingObj) {
-        let pokemon = await GetPokemonStats(pokemonName);
-        inventory.push(pokemon);
+        let genPokemon = new Pokemon(pokemonName, 110, 110);
+        inventory.push(genPokemon);
         json['p-inv'] = inventory;
         return json;
     }
     return json;
 }
 
-function GetRandomPokemon(pokieArry) {
-    var arrayLength = pokieArry.length;
-    var indices = [];
+function CheckInvForPokemon(inventory) {
+    return inventory.find(o => {
+        if (o.name === pokemonName) {
+            return true;
+        }
+    });
+}
 
+function GetRandomPokemon(pokieArry) {
+    let arrayLength = pokieArry.length;
+    let indices = [];
     for (var i = 0; i < 3; i++) {
-        var randIndex = Math.floor(Math.random() * (arrayLength - 0 + 1) + 0);
+        let randIndex = Math.floor(Math.random() * (arrayLength - 0 + 1) + 0);
         indices.push(randIndex);
     }
-    var winner = indices[Math.floor(Math.random() * (2 - 0 + 1) + 0)];
+    let winner = indices[Math.floor(Math.random() * (2 - 0 + 1) + 0)];
     return pokieArry[winner];
 }
 
