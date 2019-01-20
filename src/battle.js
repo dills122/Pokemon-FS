@@ -10,13 +10,11 @@ function Battle(foundPokemon) {
     var battlingPokemon;
     SetupBattle(foundPokemon).then(results => {
         battlingPokemon = results.battlePokemon;
-        return PickPokemonPrompt(battlingPokemon , results.playInv);
+        return PickPokemonPrompt(battlingPokemon, results.playInv);
     }).then(answers => {
         let playerPokemon = answers.battle;
         return BattlePrompt(battlingPokemon, playerPokemon);
-    }).then(vals => {
-
-    });
+    }).then(vals => {console.log(vals)});
 
 }
 
@@ -40,18 +38,31 @@ function PickPokemonPrompt(battlingPokemon, pInv) {
         type: 'list',
         message: `You found a ${battlingPokemon.name}, with power ${battlingPokemon.power}, which Pokemon do you want to use?`,
         choices: pInv.map(pokie => `${pokie.name}: ${pokie.power}`)
-    }
+    };
     return inquirer.prompt([pickPokemonObj]);
 }
 
 async function BattlePrompt(battlingPokemon, playerPokemon) {
     for (let i = 0; i < 3; i++) {
-
+        var answer = await BuildBattlePrompt(`${battlingPokemon.name}: ${battlingPokemon.power}`);
+        if (answer.battle === 'Run') {
+            return false;
+        }
     }
+    return true;
 }
 
-function BuildBattlePrompt(battlePokemonStr, playerPokemonStr) {
- 
+function BuildBattlePrompt(battlePokemonStr) {
+    return inquirer.prompt([{
+        name: 'battle',
+        type: 'list',
+        message: `Your opponent is ${battlePokemonStr}, do you want to fight?`,
+        choices: ['Fight', 'Run']
+    }]);
+}
+
+function FightPokemon(pokemonOne, pokemonTwo) {
+    
 }
 
 
