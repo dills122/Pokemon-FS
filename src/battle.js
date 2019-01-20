@@ -7,8 +7,10 @@ const {
 const inquirer = require('inquirer');
 
 function Battle(foundPokemon) {
+    var battlingPokemon;
     SetupBattle(foundPokemon).then(results => {
-        return PickPokemonPrompt();
+        battlingPokemon = results.battlePokemon;
+        return PickPokemonPrompt(battlingPokemon , results.playInv);
     }).then(answers => {
         let playerPokemon = answers.battle;
         return BattlePrompt(battlingPokemon, playerPokemon);
@@ -36,7 +38,7 @@ function PickPokemonPrompt(battlingPokemon, pInv) {
     let pickPokemonObj = {
         name: 'battle',
         type: 'list',
-        message: `You found a ${battlingPokemon.name}, with power ${battlePokemon.power}, which Pokemon do you want to use?`,
+        message: `You found a ${battlingPokemon.name}, with power ${battlingPokemon.power}, which Pokemon do you want to use?`,
         choices: pInv.map(pokie => `${pokie.name}: ${pokie.power}`)
     }
     return inquirer.prompt([pickPokemonObj]);
