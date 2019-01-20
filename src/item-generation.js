@@ -47,17 +47,10 @@ async function AddPokemon(json, pokemonName) {
         }
     });
     if (typeof existingObj === 'undefined' && !existingObj) {
-        try {
-            var pokemon = await GetPokemonStats(pokemonName);
-            inventory.push(pokemon);
-            json['p-inv'] = inventory;
-            return json;
-        } catch (error) {
-            console.log(error);
-        }
-        var genPokemon = new Pokemon(pokemonName, 110, 110);
-        inventory.push(genPokemon);
+        let pokemon = await GetPokemonStats(pokemonName);
+        inventory.push(pokemon);
         json['p-inv'] = inventory;
+        return json;
     }
     return json;
 }
