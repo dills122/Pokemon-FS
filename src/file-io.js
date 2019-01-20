@@ -1,6 +1,4 @@
 const fs = require('fs');
-const readline = require('readline');
-const stream = require('stream');
 const util = require('util');
 var appRoot = require('app-root-path');
 

@@ -1,8 +1,6 @@
-const pokemon = require('./data/en');
 const {
     ReviewSearchHistory
 } = require('./search-history');
-const util = require('util');
 const {
     AttemptToCatch
 } = require('./catch');

@@ -7,12 +7,12 @@ const {
 } = require('./item-generation');
 
 function AttemptToCatch() {
-    var luck = CheckLuck();
+    let luck = CheckLuck();
     if (!luck) {
         console.log("Couldn't find anything yet");
-    } else {
-        DisplayPrompt();
+        return;
     }
+    DisplayPrompt();
 }
 
 function DisplayPrompt() {
