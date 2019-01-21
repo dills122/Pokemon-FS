@@ -88,11 +88,11 @@ function FightPokemon(pokemonOne, pokemonTwo) {
     let UB = Math.ceil(LB * 1.6);
 
     if (pokemonOne.power > pokemonTwo.power) {
-        pokemonOne.power -= getRndInteger(LB, UB);
-        pokemonTwo.power -= getRndInteger(0, (UB - LB));
+        pokemonOne.power -= GetRandInt(LB, UB);
+        pokemonTwo.power -= GetRandInt(0, (UB - LB));
     } else {
-        pokemonOne.power -= getRndInteger(0, (UB - LB));
-        pokemonTwo.power -= getRndInteger(LB, UB);
+        pokemonOne.power -= GetRandInt(0, (UB - LB));
+        pokemonTwo.power -= GetRandInt(LB, UB);
     }
 
     pokemonOne.power = pokemonOne.power <= 0 ? 0 : pokemonOne.power;
@@ -105,18 +105,22 @@ function FightPokemon(pokemonOne, pokemonTwo) {
 
 function PercentDifference(valOne, valTwo) {
     let valDiff = Math.abs(valOne - valTwo);
-    let valAvg = Math.ceil(((valOne + valTwo) / 2));
+    let valAvg = ((valOne + valTwo) / 2);
     return Math.ceil(((valDiff / valAvg) * 100));
 }
 
 function LowerBond(PD) {
-    return Math.ceil(((PD / 2) + PD) / 2);
+    return Math.ceil((((PD / 2) + PD) / 2));
 }
 
-function getRndInteger(min, max) {
+function GetRandInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
 module.exports = {
-    Battle
+    Battle,
+    PercentDifference,
+    LowerBond,
+    GetRandInt,
+    SetupBattle
 }

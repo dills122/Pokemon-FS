@@ -11,10 +11,22 @@ To install and run the development edition you need to install this app globally
 ``` bash
 npm install -g {workingDir}\Catch-Em-All
 ```
+Example Commands
+```
+# Running local (only good for testing out)
+node ./catchem.js search
+
+# Running globally
+catchem search
+```
+
+> Once the search command is activated, the rest of the interaction is through interactive prompts.
 
 ## Searching
 
-Currently the only command supported is `search`, which allows you to attempt to catch pokemon and add them to your inventory. Right now the catching randomness isn't good and catch rate is 80% or greater.
+Currently the only command supported is `search`, which allows you to attempt to find pokemon to capture. However, to catch one you will need to be able to defeat it battle.
+
+To successfully win a battle pick a pokemon that has the high difference in power compared to the attacking pokemon. The hits are calculated off of percent difference and this can help you your trainer journeys.
 
 Remove the dust from those unseen folders and catch a pokemon.
 
@@ -25,3 +37,4 @@ Remove the dust from those unseen folders and catch a pokemon.
 * [Hasha](https://github.com/sindresorhus/hasha)
 * [Inquirer](https://github.com/SBoudrias/Inquirer.js/)
 * [app-root-path](https://github.com/inxilpro/node-app-root-path)
+* [request](https://github.com/request/request)
