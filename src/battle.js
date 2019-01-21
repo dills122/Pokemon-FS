@@ -56,7 +56,6 @@ async function BattlePrompt(battlingPokemon, playerPokemon) {
         if (battlingPokemon.power <= 0 || playerPokemon.power <= 0) {
             return battlingPokemon.power <= 0 && playerPokemon.power >= 1 ? true : false;
         }
-
         let answer = await BuildBattlePrompt(`${battlingPokemon.name}: ${battlingPokemon.power}`);
 
         if (answer.battle === 'Run') {
@@ -117,7 +116,6 @@ function LowerBond(PD) {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
-
 
 module.exports = {
     Battle
