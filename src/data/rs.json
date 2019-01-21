@@ -27,6 +27,12 @@
 			"count": 1,
 			"power": 36,
 			"defense": 36
+		},
+		{
+			"name": "Regigigas",
+			"count": 1,
+			"power": 100,
+			"defense": 100
 		}
 	],
 	"i-inv": [

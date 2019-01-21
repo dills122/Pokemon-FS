@@ -1,5 +1,4 @@
 const {
-    GetPokemon,
     GetFileContent,
     WriteToFile
 } = require('./file-io');
@@ -13,19 +12,15 @@ var {
     Pokemon
 } = require('./models/pokemon');
 
-function CatchPokemon() {
-    var newPokemon = "";
-    GetPokemon().then(pokemon => {
-            let caughtPokemon = GetRandomPokemon(JSON.parse(pokemon));
-            newPokemon = caughtPokemon;
-            console.log(`Congrats you caught ${caughtPokemon}`);
-            return GetFileContent();
-        }).then(content => {
+function CatchPokemon(pokemon) {
+    GetFileContent()
+        .then(content => {
+            console.log(`Congrats you caught ${pokemon}`);
             let json = JSON.parse(content);
             if (!json.hasOwnProperty('p-inv')) {
                 json['p-inv'] = [];
             }
-            return AddPokemon(json, newPokemon);
+            return AddPokemon(json, pokemon);
         }).then(updatedJson => {
             return WriteToFile(JSON.stringify(updatedJson));
         }).then(val => {
@@ -40,7 +35,7 @@ function CatchPokemon() {
 
 async function AddPokemon(json, pokemonName) {
     let inventory = json['p-inv'];
-    let alreadyCaught = CheckInvForPokemon(inventory);
+    let alreadyCaught = CheckInvForPokemon(inventory,pokemonName);
 
     if (typeof alreadyCaught === 'undefined' && !alreadyCaught) {
         try {
@@ -59,7 +54,7 @@ async function AddPokemon(json, pokemonName) {
     return json;
 }
 
-function CheckInvForPokemon(inventory) {
+function CheckInvForPokemon(inventory,pokemonName) {
     return inventory.find(o => {
         if (o.name === pokemonName) {
             return true;
@@ -79,5 +74,6 @@ function GetRandomPokemon(pokieArry) {
 }
 
 module.exports = {
-    CatchPokemon
+    CatchPokemon,
+    GetRandomPokemon
 }

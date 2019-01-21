@@ -6,25 +6,25 @@ const {
 } = require('./file-io');
 const inquirer = require('inquirer');
 const {
-    CalculateValue
-} = require('./helpers');
-const {
     Pokemon
 } = require('./models/pokemon');
 
 function Battle(foundPokemon) {
-    var battlingPokemon;
-    SetupBattle(foundPokemon).then(results => {
-        battlingPokemon = results.battlePokemon;
-        return PickPokemonPrompt(battlingPokemon, results.playInv);
-    }).then(answers => {
-        let [name, power] = answers.battle.split(" ");
-        let playerPokemon = new Pokemon(name.substring(0, name.length - 1), power);
-        return BattlePrompt(battlingPokemon, playerPokemon);
-    }).then(vals => {
-        console.log(vals);
+    return new Promise((resolve, reject) => {
+        var battlingPokemon;
+        SetupBattle(foundPokemon).then(results => {
+            battlingPokemon = results.battlePokemon;
+            return PickPokemonPrompt(battlingPokemon, results.playInv);
+        }).then(answers => {
+            let [name, power] = answers.battle.split(" ");
+            let playerPokemon = new Pokemon(name.substring(0, name.length - 1), power);
+            return BattlePrompt(battlingPokemon, playerPokemon);
+        }).then(IsWon => {
+            resolve(IsWon);
+        }).catch(error => {
+            reject(error);
+        });
     });
-
 }
 
 async function SetupBattle(foundPokemon) {
@@ -88,14 +88,14 @@ function FightPokemon(pokemonOne, pokemonTwo) {
     let LB = LowerBond(PD);
     let UB = Math.ceil(LB * 1.6);
 
-    if(pokemonOne.power > pokemonTwo.power) {
-        pokemonOne.power -= getRndInteger(LB,UB);
-        pokemonTwo.power -= getRndInteger(0,(UB -LB));
+    if (pokemonOne.power > pokemonTwo.power) {
+        pokemonOne.power -= getRndInteger(LB, UB);
+        pokemonTwo.power -= getRndInteger(0, (UB - LB));
     } else {
-        pokemonOne.power -= getRndInteger(0,(UB -LB));
-        pokemonTwo.power -= getRndInteger(LB,UB);
+        pokemonOne.power -= getRndInteger(0, (UB - LB));
+        pokemonTwo.power -= getRndInteger(LB, UB);
     }
-    
+
     pokemonOne.power = pokemonOne.power <= 0 ? 0 : pokemonOne.power;
     pokemonTwo.power = pokemonTwo.power <= 0 ? 0 : pokemonTwo.power;
     return {
@@ -106,17 +106,17 @@ function FightPokemon(pokemonOne, pokemonTwo) {
 
 function PercentDifference(valOne, valTwo) {
     let valDiff = Math.abs(valOne - valTwo);
-    let valAvg = Math.ceil(((valOne + valTwo)/2));
-    return Math.ceil(((valDiff/valAvg) * 100));
+    let valAvg = Math.ceil(((valOne + valTwo) / 2));
+    return Math.ceil(((valDiff / valAvg) * 100));
 }
 
 function LowerBond(PD) {
-    return Math.ceil(((PD/2)+PD)/2);
+    return Math.ceil(((PD / 2) + PD) / 2);
 }
 
 function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-  }
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
 
 module.exports = {

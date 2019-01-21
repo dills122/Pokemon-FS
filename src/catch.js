@@ -3,11 +3,15 @@ const {
     GenerateQuestionObj
 } = require('./q-builder');
 const {
-    CatchPokemon
+    CatchPokemon,
+    GetRandomPokemon
 } = require('./item-generation');
 const {
     Battle
 } = require('./battle');
+const {
+    GetPokemon,
+} = require('./file-io');
 
 function AttemptToCatch() {
     let luck = CheckLuck();
@@ -22,8 +26,19 @@ function DisplayPrompt() {
     inquirer.prompt([GenerateQuestionObj()]).then((answers) => {
         if (!answers.catch.includes('N')) {
             console.log('Nice! you found something!');
-            //CatchPokemon();
-            //Battle();
+            var foundPokemon = "";
+            GetPokemon().then(pokemonArry => {
+                foundPokemon = GetRandomPokemon(JSON.parse(pokemonArry));
+                return Battle(foundPokemon);
+            }).then(IsWon => {
+                if (IsWon) {
+                    CatchPokemon(foundPokemon);
+                } else {
+                    console.log(`Your fight with ${foundPokemon} was unsuccessful`);
+                }
+            }).catch(error => {
+
+            });
         }
     });
 }
