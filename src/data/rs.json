@@ -1,39 +1,10 @@
 {
-	"name": "Dylan",
+	"name": "Your Name Here",
 	"recent-searches": [
-		
+
 	],
 	"p-inv": [
-		{
-			"name": "Bronzong",
-			"count": 1,
-			"power": 33,
-			"defense": 33
-		},
-		{
-			"name": "Hoopa",
-			"count": 1,
-			"power": 70,
-			"defense": 70
-		},
-		{
-			"name": "Machamp",
-			"count": 1,
-			"power": 55,
-			"defense": 55
-		},
-		{
-			"name": "Turtonator",
-			"count": 1,
-			"power": 36,
-			"defense": 36
-		},
-		{
-			"name": "Regigigas",
-			"count": 1,
-			"power": 100,
-			"defense": 100
-		}
+
 	],
 	"i-inv": [
 
