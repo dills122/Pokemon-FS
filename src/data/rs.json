@@ -1,45 +1,10 @@
 {
-	"name": "Dylan",
+	"name": "Your Name Here",
 	"recent-searches": [
-		"efecfb2c9825a2ff654baa2a9dae7864a45a58402dcf5c377920f9622655d50362629173db6c1c1c33ae2db411d9d60f4ce863f500395aa0bc4c1acf799c1bb5"
+
 	],
 	"p-inv": [
-		{
-			"name": "Bronzong",
-			"count": 1,
-			"power": 33,
-			"defense": 33
-		},
-		{
-			"name": "Hoopa",
-			"count": 1,
-			"power": 70,
-			"defense": 70
-		},
-		{
-			"name": "Machamp",
-			"count": 1,
-			"power": 55,
-			"defense": 55
-		},
-		{
-			"name": "Turtonator",
-			"count": 1,
-			"power": 36,
-			"defense": 36
-		},
-		{
-			"name": "Regigigas",
-			"count": 1,
-			"power": 100,
-			"defense": 100
-		},
-		{
-			"name": "Weavile",
-			"count": 1,
-			"power": 125,
-			"defense": 125
-		}
+
 	],
 	"i-inv": [
 
