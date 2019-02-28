@@ -34,8 +34,6 @@ To successfully win a battle pick a pokemon that has the high difference in powe
 
 Remove the dust from those unseen folders and catch a pokemon.
 
-Testing update
-
 
 ##### Tech Used
 
