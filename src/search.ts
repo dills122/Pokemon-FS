@@ -9,7 +9,7 @@ export default async (): Promise<void> => {
     if (canSearch) {
       await Catch.AttemptToCatch();
     } else {
-      console.log(
+      return console.log(
         "It seems this area is quiet. Maybe another area is more active"
       );
     }
