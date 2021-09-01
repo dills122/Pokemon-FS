@@ -1,17 +1,22 @@
 import inquirer from "inquirer";
-import { GetPokemon } from "./file-io";
 import Question from "./question-builder";
-const { CatchPokemon, GetRandomPokemon } = require("./item-generation");
-const { Battle } = require("./battle");
+import GetRandomPokemon from "./get-random-pokemon";
+import { PokemonInventory } from "./classes/inventory";
 
 export default abstract class Catch {
-  public static AttemptToCatch(): void {
+  public static async AttemptToCatch(): Promise<void> {
     const luck = this.CheckLuck();
     if (!luck) {
       console.log("Couldn't find anything yet");
       return;
     }
-    this.DisplayPrompt();
+    await this.DisplayPrompt();
+  }
+  private static async Catch(): Promise<void> {
+    const foundPokemon = await GetRandomPokemon();
+    const inv = new PokemonInventory();
+    await inv.init();
+    await inv.add(foundPokemon);
   }
   private static CheckLuck(): boolean {
     const _maxNum = 50000;
@@ -22,25 +27,13 @@ export default abstract class Catch {
     return false;
   }
   private static async DisplayPrompt(): Promise<void> {
-    try {
-      const questionList = new Question().getQuestionPromptObject();
-      //TODO look into how to properly type this
-      const answers = await inquirer.prompt([questionList]);
-      if (answers.catch.includes("N")) {
-        return;
-      }
-      console.log("Nice! you found something!");
-      let foundPokemon = "";
-      const Pokemon = await GetPokemon();
-      foundPokemon = GetRandomPokemon(JSON.parse(Pokemon.toString("utf8")));
-      const isWon = await Battle(foundPokemon);
-      if (isWon) {
-        CatchPokemon(foundPokemon);
-      } else {
-        console.log(`Your fight with ${foundPokemon} was unsuccessful`);
-      }
-    } catch (err) {
-      //Need to add some type of logging here also
+    const questionList = new Question().getQuestionPromptObject();
+    //TODO look into how to properly type this
+    const answers = await inquirer.prompt([questionList]);
+    if (answers.catch.includes("N")) {
+      return;
     }
+    console.log("Nice! you found something!");
+    await this.Catch();
   }
 }

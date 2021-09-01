@@ -23,6 +23,7 @@
     "got": "^11.8.2",
     "hasha": "^3.0.0",
     "inquirer": "^6.2.1",
+    "pokeapi-typescript": "^2.1.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5"
   },

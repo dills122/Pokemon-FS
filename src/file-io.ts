@@ -1,6 +1,7 @@
 import fs from "fs";
 import util from "util";
 import appRoot from "app-root-path";
+import { DataStorageFile } from "./shared-types";
 
 //Constant Variables
 const recentSearchesFile = appRoot + "/src/data/rs.json";
@@ -17,13 +18,15 @@ async function GetPokemon(): Promise<Buffer> {
   return await readFile(pokemonListFile);
 }
 
-async function WriteToFile(contents: string): Promise<void> {
-  return await writeFile(recentSearchesFile, contents);
+async function WriteToDataStorageFile(
+  contents: DataStorageFile
+): Promise<void> {
+  return await writeFile(recentSearchesFile, JSON.stringify(contents));
 }
 
 export default {
   GetFileContent,
   GetPokemon,
-  WriteToFile,
+  WriteToDataStorageFile,
 };
-export { GetFileContent, GetPokemon, WriteToFile };
+export { GetFileContent, GetPokemon, WriteToDataStorageFile };

@@ -1,20 +1,16 @@
-import got from "got";
+import PokeAPI from "pokeapi-typescript";
+import { PokemonInventoryItem } from "./shared-types";
 
-const BaseURL = "https://pokeapi.co/api/v2";
-
-interface PokemonStatsResponse {
-  stats: PokemonStats;
-}
-
-export interface PokemonStats {
-  base_stat: number;
-}
-
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface PokemonData extends PokemonInventoryItem {}
 export default abstract class APIAccess {
-  public static async GetStats(name: string): Promise<PokemonStats> {
-    const resp = await got<PokemonStatsResponse>(
-      `${BaseURL}/pokemon/${name.toLowerCase()}`
-    );
-    return resp.body.stats;
+  public static async GetPokemonDetails(
+    pokemonName: string
+  ): Promise<PokemonData> {
+    const pokemonData = await PokeAPI.Pokemon.resolve(pokemonName);
+    return {
+      name: pokemonData.name,
+      caught: new Date().toISOString(),
+    };
   }
 }
