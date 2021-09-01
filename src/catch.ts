@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { GetPokemon } from "./file-io";
-const { GenerateQuestionObj } = require("./q-builder");
+import Question from "./question-builder";
 const { CatchPokemon, GetRandomPokemon } = require("./item-generation");
 const { Battle } = require("./battle");
 
@@ -23,7 +23,7 @@ export default abstract class Catch {
   }
   private static async DisplayPrompt(): Promise<void> {
     try {
-      const questionList = GenerateQuestionObj();
+      const questionList = new Question().getQuestionPromptObject();
       //TODO look into how to properly type this
       const answers = await inquirer.prompt([questionList]);
       if (answers.catch.includes("N")) {

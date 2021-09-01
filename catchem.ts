@@ -1,5 +1,5 @@
 import program from "commander";
-const { CheckForPokemon } = require("./src/search");
+import LookForPokemon from "./src/search";
 (() => {
   console.log("Welcome to Catch Em All");
 
@@ -12,9 +12,9 @@ const { CheckForPokemon } = require("./src/search");
   program
     .command("search")
     .alias("s")
-    .action(() => {
+    .action(async () => {
       //Logic for searching the current and child directories for pokemon
-      CheckForPokemon();
+      await LookForPokemon();
     });
 
   program
