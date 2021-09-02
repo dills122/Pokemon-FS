@@ -20,7 +20,7 @@ import LookForPokemon from "./src/search";
   program
     .command("catch <name>")
     .alias("c")
-    .action((name) => {
+    .action(() => {
       //Logic for catching one of the pokemon in the current directory
     });
 

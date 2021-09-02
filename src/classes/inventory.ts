@@ -15,7 +15,7 @@ export class PokemonInventory extends Inventory {
     this.inventory = this.dataFileObject.getInventory();
   }
   canAddPokemon(pokemonToAdd: string): boolean {
-    return this.inventory.some((pokemon) => pokemon.name === pokemonToAdd);
+    return !this.inventory.some((pokemon) => pokemon.name === pokemonToAdd);
   }
   async add(pokemonToAdd: string): Promise<void> {
     if (!this.inventory) {

@@ -32,6 +32,7 @@ export default class SearchHistory {
     return hasha(currDir + hours);
   }
 
+  //TODO create better system of cleaning up
   private CleanUpSearchHistory() {
     const historyLength = this.searchHistory.length;
     if (historyLength >= _maxHistorySize) {

@@ -1,7 +1,7 @@
 {
   "name": "catch-em-all",
-  "version": "0.1.0",
-  "description": "A file system pokemon game",
+  "version": "0.1.2",
+  "description": "Pokemon, but in your file system, go out and find some wild ones in your fs",
   "main": "catchem.js",
   "scripts": {
     "test": "mocha -r ts-node/register \"test/**/*.spec.ts\"",
@@ -13,19 +13,21 @@
   },
   "keywords": [
     "pokemon",
-    "filesystem"
+    "filesystem",
+    "fs",
+    "cli",
+    "game",
+    "cli-game",
+    "pokemon-game"
   ],
   "author": "Dylan Steele",
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.1.0",
     "commander": "^2.19.0",
-    "got": "^11.8.2",
     "hasha": "^3.0.0",
     "inquirer": "^6.2.1",
-    "pokeapi-typescript": "^2.1.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
+    "pokeapi-typescript": "^2.1.0"
   },
   "devDependencies": {
     "@types/chai": "~4.2.14",

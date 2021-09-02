@@ -23,5 +23,5 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "declarationDir": "./types"
   },
-  "exclude": ["test", "mocks", "tests"]
+  "exclude": ["test", "mocks", "tests", "node_modules"]
 }
