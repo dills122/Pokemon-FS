@@ -40,4 +40,3 @@ Remove the dust from those unseen folders and catch a pokemon.
 - [Hasha](https://github.com/sindresorhus/hasha)
 - [Inquirer](https://github.com/SBoudrias/Inquirer.js/)
 - [app-root-path](https://github.com/inxilpro/node-app-root-path)
-- [request](https://github.com/request/request)
