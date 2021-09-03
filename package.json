@@ -1,14 +1,24 @@
 {
   "name": "catch-em-all",
-  "version": "0.1.0",
-  "description": "A file system pokemon game",
+  "version": "0.1.2",
+  "description": "Pokemon, but in your file system, go out and find some wild ones in your fs",
   "main": "catchem.js",
   "scripts": {
-    "test": "mocha \"./test/**/*.spec.js\""
+    "test": "mocha -r ts-node/register \"test/**/*.spec.ts\"",
+    "build": "tsc -p .",
+    "compile": "tsc",
+    "clean": "tsc --build --clean && rm -rf ./types",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "keywords": [
     "pokemon",
-    "filesystem"
+    "filesystem",
+    "fs",
+    "cli",
+    "game",
+    "cli-game",
+    "pokemon-game"
   ],
   "author": "Dylan Steele",
   "license": "MIT",
@@ -17,12 +27,23 @@
     "commander": "^2.19.0",
     "hasha": "^3.0.0",
     "inquirer": "^6.2.1",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
+    "pokeapi-typescript": "^2.1.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "chai": "^4.2.0"
+    "@types/chai": "~4.2.14",
+    "@types/inquirer": "^7.3.3",
+    "@types/lodash": "~4.14.168",
+    "@types/mocha": "~8.2.0",
+    "@types/node": "~14.14.22",
+    "@types/sinon": "~9.0.10",
+    "@typescript-eslint/eslint-plugin": "~4.19.0",
+    "@typescript-eslint/parser": "~4.19.0",
+    "chai": "~4.2.0",
+    "eslint": "~7.22.0",
+    "mocha": "~8.2.1",
+    "sinon": "~9.2.3",
+    "ts-node": "~9.1.1",
+    "typescript": "4.3.2"
   },
   "bin": {
     "catchem": "./bin/global.js"
