@@ -44,7 +44,7 @@ describe("Catch::", () => {
       try {
         await Catch.AttemptToCatch();
         expect(true).equal(false);
-      } catch (err) {
+      } catch (err: any) {
         expect(err.message).equal("err");
         expect(stubs.DisplayPromptStub.callCount).to.equal(1);
       }
@@ -109,7 +109,7 @@ describe("Catch::", () => {
       try {
         await Catch.AttemptToCatch();
         expect(true).equal(false);
-      } catch (err) {
+      } catch (err: any) {
         expect(stubs.inquirerPromptStub.callCount).to.equal(1);
         expect(stubs.GetRandomPokemonStub.callCount).to.equal(1);
         expect(stubs.PokemonInventoryInitStub.callCount).to.equal(0);
@@ -141,7 +141,7 @@ describe("Catch::", () => {
       try {
         await Catch.AttemptToCatch();
         expect(true).equal(false);
-      } catch (err) {
+      } catch (err: any) {
         expect(stubs.inquirerPromptStub.callCount).to.equal(1);
         expect(stubs.GetRandomPokemonStub.callCount).to.equal(1);
         expect(stubs.PokemonInventoryInitStub.callCount).to.equal(1);

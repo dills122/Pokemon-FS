@@ -40,7 +40,7 @@ describe("Data File::", () => {
     try {
       const dataFile = new DataFile();
       await dataFile.init();
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.equal("err");
       expect(stubs.getFileContentStub.callCount).to.equal(1);
       expect(stubs.writeToDataStorageFileStub.callCount).to.equal(0);
@@ -67,7 +67,7 @@ describe("Data File::", () => {
       const dataFile = new DataFile();
       const inventory = dataFile.getInventory();
       expect(inventory).to.be.an("array").and.length(0);
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.equal("No data file loaded yet");
       expect(stubs.getFileContentStub.callCount).to.equal(0);
       expect(stubs.writeToDataStorageFileStub.callCount).to.equal(0);
@@ -78,7 +78,7 @@ describe("Data File::", () => {
       const dataFile = new DataFile();
       const searchHistory = dataFile.getSearchHistory();
       expect(searchHistory).to.be.an("array").and.length(0);
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.equal("No data file loaded yet");
       expect(stubs.getFileContentStub.callCount).to.equal(0);
       expect(stubs.writeToDataStorageFileStub.callCount).to.equal(0);
@@ -122,7 +122,7 @@ describe("Data File::", () => {
       await dataFile.updateFile({
         inventoryUpdates: inventory,
       });
-    } catch (err) {
+    } catch (err: any) {
       expect(err.message).to.equal("err");
       expect(stubs.getFileContentStub.callCount).to.equal(1);
       expect(stubs.writeToDataStorageFileStub.callCount).to.equal(1);
