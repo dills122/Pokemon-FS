@@ -1,6 +1,6 @@
 # Pokemon : File System Edition
 
-[![Build Status](https://travis-ci.org/dills122/Pokemon-FS.svg?branch=master)](https://travis-ci.org/dills122/Pokemon-FS) [![CodeFactor](https://www.codefactor.io/repository/github/dills122/pokemon-fs/badge)](https://www.codefactor.io/repository/github/dills122/pokemon-fs)
+[![CI Job](https://github.com/dills122/Pokemon-FS/actions/workflows/ci.action.yml/badge.svg)](https://github.com/dills122/Pokemon-FS/actions/workflows/ci.action.yml) [![CodeFactor](https://www.codefactor.io/repository/github/dills122/pokemon-fs/badge)](https://www.codefactor.io/repository/github/dills122/pokemon-fs)
 
 <p align="center">
   <img width="150" height="150" src="./assets/logo.png" alt="Logo Image">
