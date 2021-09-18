@@ -16,3 +16,10 @@ jobs:
           node-version: 14
       - run: npm install
       - run: npm test
+  automerge:
+    needs: pr_job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
