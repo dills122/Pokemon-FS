@@ -3,6 +3,9 @@ name: CI Job
 on:
   pull_request:
     types: [synchronize, opened, reopened]
+  push:
+    branches:
+      - master
 jobs:
   pr_job:
     runs-on: ubuntu-latest
