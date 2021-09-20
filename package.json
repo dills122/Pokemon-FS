@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "commander": "^2.19.0",
+    "commander": "^8.2.0",
     "hasha": "^3.0.0",
     "inquirer": "^6.2.1",
     "pokeapi-typescript": "^2.1.0"
