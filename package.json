@@ -30,7 +30,7 @@
     "pokeapi-typescript": "^2.1.0"
   },
   "devDependencies": {
-    "@types/chai": "~4.2.14",
+    "@types/chai": "~4.3.0",
     "@types/inquirer": "^8.1.1",
     "@types/lodash": "~4.14.168",
     "@types/mocha": "~9.0.0",
